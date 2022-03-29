@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 20% 1fr;
+}
+
+.head {
+  background: rgb(248, 224, 144);
+}
+
+.cards {
+  background: rgb(235, 247, 219);
+}
+.hideform {
+  display: none;
+}
+
