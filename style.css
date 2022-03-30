@@ -6,16 +6,40 @@
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-rows: 20% 1fr;
+  grid-template-rows: 15% 1fr;
 }
 
 .head {
   background: rgb(248, 224, 144);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .cards {
   background: rgb(235, 247, 219);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 40px;
+  padding: 50px;
 }
+
+.card {
+  background: whitesmoke;
+  border: 2px black solid;
+  border-radius: 15px;
+  height: 200px;
+
+}
+.form {
+  width: 400px;
+  background: white;
+  margin: auto;
+  padding: 20px;
+}
+
 .hideform {
   display: none;
 }
