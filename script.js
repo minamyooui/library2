@@ -4,6 +4,8 @@ const openBookForm = document.querySelector('#openBookForm');
 openBookForm.addEventListener('click', openForm);
 const form = document.querySelector('form');
 form.addEventListener('submit', addBook);
+const closeButton = document.querySelector('#close');
+closeButton.addEventListener('click', openForm);
 for(let i = 0; i < 3; i++) {
   const book = new Book('JoJo', 'JoJo', 447, true);
   addBookToLibrary(book);
@@ -47,8 +49,8 @@ function getReadValue() {
 function displayBooks() {
   clearDisplay();
   const cards =  document.querySelector('.cards');
-  library.forEach(book => {
-    const card = createCard(book);
+  library.forEach((book, i) => {
+    const card = createCard(book, i);
     cards.appendChild(card);
   });
 }
@@ -60,7 +62,7 @@ function  clearDisplay() {
   }
 }
 
-function createCard(book) {
+function createCard(book, i) {
   const card = document.createElement('div');
   card.classList.add('card');
   const title = document.createElement('p');
@@ -71,13 +73,23 @@ function createCard(book) {
   pages.textContent = 'Pages: '+ book.pages;
   const read = document.createElement('p');
   read.textContent = book.read ? 'Read' : 'Not Read';
+  const button = document.createElement('button');
+  button.textContent = 'Delete Book';
+  button.onclick = removeBook;
+  button.setAttribute('data-index', i);
   card.appendChild(title);
   card.appendChild(author);
   card.appendChild(pages);
   card.appendChild(read);
+  card.appendChild(button);
   return card;
 }
 
+function removeBook() {
+  let i = this.dataset.index;
+  library.splice(i, 1);
+  displayBooks();
+}
 function openForm() {
   const form = document.querySelector('.form');
   form.classList.toggle('hideform');

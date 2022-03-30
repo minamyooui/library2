@@ -1,12 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 .container {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-rows: 15% 1fr;
+  grid-template-rows: 15vh 1fr;
 }
 
 .head {
@@ -14,8 +15,21 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   position: relative;
+  padding-top: 20px;
+}
+
+.form {
+  width: 400px;
+  background: white;
+  margin: auto;
+  padding: 40px;
+  position: absolute;
+  top: 15vh;
+  border: 2px solid black;
+  border-radius: 15px;
 }
 
 .cards {
@@ -31,14 +45,10 @@
   border: 2px black solid;
   border-radius: 15px;
   height: 200px;
+  padding: 10px;
+}
 
-}
-.form {
-  width: 400px;
-  background: white;
-  margin: auto;
-  padding: 20px;
-}
+
 
 .hideform {
   display: none;
