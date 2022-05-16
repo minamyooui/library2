@@ -6,7 +6,26 @@ const form = document.querySelector('form');
 form.addEventListener('submit', addBook);
 const closeButton = document.querySelector('#close');
 closeButton.addEventListener('click', openForm);
+setValidation();
 
+function setValidation() {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+  addValidation(title);
+  addValidation(author);
+  addValidation(pages);
+}
+
+function addValidation(e) {
+  e.addEventListener('input', () => {
+    e.setCustomValidity('');
+    e.checkValidity();
+  });
+  e.addEventListener('invalid', () => {
+    e.setCustomValidity('Please fill out this field');
+  });
+}
 class Book {
   constructor(title, author, pages, read) {
     this.title = title
@@ -40,6 +59,7 @@ function addBook(e) {
   const book = new Book(title, author, pages, read);
   addBookToLibrary(book);
   displayBooks();
+  openForm();
   e.preventDefault();
 }
 
